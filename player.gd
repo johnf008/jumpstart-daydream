@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@onready var win: Label = %win
 
 const SPEED = 800.0
 const JUMP_VELOCITY = -900.0
@@ -30,3 +31,8 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, 40)
 
 	move_and_slide()
+
+
+func _on_mango_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Player"):
+		win.visible = true
